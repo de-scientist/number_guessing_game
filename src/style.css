@@ -33,6 +33,25 @@ body {
   justify-content: space-between;
 }
 
-.container button {
+.container .btn {
+  border: none;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  outline: none;
+  font-size: 0.9rem;
+  background-color: #cb3050;
+  border-radius: 4px;
+  color: white;
+  font-family: inherit;
+}
 
+.container .btn:focus {
+  transform: scale(0.98);
+  outline: none;
+}
+
+.container h2{
+  text-align: center;
+  font-size: 3rem;
+  margin: 1rem 0;
 }
