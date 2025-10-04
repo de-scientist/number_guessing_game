@@ -26,7 +26,9 @@ btnCheckEL.addEventListener("click", () => {
       if (score > 1) {
         score--;
         scoreEL.textContent = score;
-        
+
+        msgEL.textContent = guess > randomNum > "Too high" : "Too Low";
+        scoreEL.textContent = score;
 
       } else {
         msgEL.textContent = "You've Lost the Game";
@@ -36,9 +38,20 @@ btnCheckEL.addEventListener("click", () => {
 
     } else {
       //success
+      hideNumEL.textContent = randomNum;
+      hideNumEL.style.width = "50%";
+      hideNumEL.style.transition = "all 0.5s ease-in";
+      containerEL.style.backgroundColor = "#eed8d";
+      msgEL.textContent = "Congratulations You've Won the Game :)"
+
     }
 
   } else {
     msgEL.textContent = "Please enter then number!"
   }
 });
+
+// display the message
+const displayMessage = function (message) {
+  msgEL.textContent = message;
+}
