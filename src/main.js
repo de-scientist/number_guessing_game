@@ -37,24 +37,24 @@ checkButton.addEventListener("click", () => {
   if (inputValue == randomNum) { 
     //Correct guess
     [guess.textContent, input.disabled] = ["Congrats! You found the number.", true];
-    [checkButton.textContent, guess.computedStyleMap.color] = ["Replay", #27ae60];
+    [checkButton.textContent, guess.color] = ["Replay", #27ae60];
   } else if (inputValue > randomNum && inputValue < 100) {
     // Guess is to high
     [guess.textContent, remainChances.textContent] = ["Your guess is high", chance];
-    guess.computedStyleMap.color = #333;
+    guess.color = #333;
   } else if (inputValue < randomNum && inputValue > 0) {
     // Guess is too low
     [guess.textContent, remainChances.textContent] = ["Your guess is low", chance];
-    guess.computedStyleMap.color = "#333";
+    guess.color = "#333";
   } else {
     // Invalid input (not in the range 1-99)
     [guess.textContent, remainChances.textContent] = ["Your number is invalid", chance];
-    guess.computedStyleMap.color = "#e74c3c";
+    guess.color = "#e74c3c";
   }
 
   if (chance == 0) {
     // No chances left, game over
     [checkButton.textContent, input.disabled, inputValue] = ["Replay", true, ""];
-    [guess.textContent, guess.computedStyleMap.color] = ["You lost the game", "#e74c3c"];
+    [guess.textContent, guess.color] = ["You lost the game", "#e74c3c"];
   }
 });
