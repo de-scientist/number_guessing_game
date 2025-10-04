@@ -17,7 +17,7 @@ body {
 }
 
 .container {
-  max-width: 85rem;
+  max-width: 850px;
   width: 100%;
   box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
   padding: 2rem;
@@ -54,4 +54,45 @@ body {
   text-align: center;
   font-size: 3rem;
   margin: 1rem 0;
+}
+
+.hide_num {
+  text-align: center;
+  font-size: 3rem;
+  background-color: #cb3050;
+  border-radius: 4px;
+  width: 25%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.message {
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.number_data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.number_data input {
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+}
+
+.number_data button {
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.content {
+  font-size: 1.2rem;
 }
