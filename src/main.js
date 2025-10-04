@@ -23,7 +23,16 @@ btnCheckEL.addEventListener("click", () => {
     //not match hide number
     if(guess != randomNum) {
 
-      if (score > 1)
+      if (score > 1) {
+        score--;
+        scoreEL.textContent = score;
+        
+
+      } else {
+        msgEL.textContent = "You've Lost the Game";
+        containerEL.style.backgroundColor = "#fff"
+        scoreEL.textContent = 0;
+      }
 
     } else {
       //success
