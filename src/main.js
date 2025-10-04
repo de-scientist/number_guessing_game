@@ -1,8 +1,12 @@
 // Initialize DOM elements
-const input = document.querySelector("input"),
-   guess = document.querySelector(".guess"),
-   checkButton = document.querySelector("button"),
-   remainChances = document.querySelector(".chances");
+const containerEL = document.querySelector(".container");
+const btnPlayEL = document.querySelector(".btn_again");
+const btnCheckEL = document.querySelector(".btn_check");
+const hideNumEL = document.querySelector(".hide_num");
+const msgEL = document.querySelector(".message");
+const inputNumEL = document.querySelector(".input_number");
+const highScoreEL = document.querySelector(".high_score");
+const score = document.querySelector(".score");
 
 // Set initial focus on the input field
 input.focus() ;
