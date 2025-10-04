@@ -20,43 +20,16 @@ btnCheckEL.addEventListener("click", () => {
   // check empty input
   if(guess) {
 
+    //not match hide number
+    if(guess != randomNum) {
+
+      if (score > 1)
+
+    } else {
+      //success
+    }
+
   } else {
     msgEL.textContent = "Please enter then number!"
-  }
-});
-
-//Add click event listener to the check button
-checkButton.addEventListener("click", () => {
-  if (input.disabled) {
-    // If the input is disabled, reset the game
-    resetGame();
-    return;
-  }
-
-  chance--; //Decrease chance by 1 on each click
-  let inputValue = input.value; //Get the value from the input field
-
-  if (inputValue == randomNum) { 
-    //Correct guess
-    [guess.textContent, input.disabled] = ["Congrats! You found the number.", true];
-    [checkButton.textContent, guess.color] = ["Replay", #27ae60];
-  } else if (inputValue > randomNum && inputValue < 100) {
-    // Guess is to high
-    [guess.textContent, remainChances.textContent] = ["Your guess is high", chance];
-    guess.color = #333;
-  } else if (inputValue < randomNum && inputValue > 0) {
-    // Guess is too low
-    [guess.textContent, remainChances.textContent] = ["Your guess is low", chance];
-    guess.color = "#333";
-  } else {
-    // Invalid input (not in the range 1-99)
-    [guess.textContent, remainChances.textContent] = ["Your number is invalid", chance];
-    guess.color = "#e74c3c";
-  }
-
-  if (chance == 0) {
-    // No chances left, game over
-    [checkButton.textContent, input.disabled, inputValue] = ["Replay", true, ""];
-    [guess.textContent, guess.color] = ["You lost the game", "#e74c3c"];
   }
 });
