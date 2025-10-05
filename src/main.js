@@ -1,67 +1,77 @@
-// Initialize DOM elements
-const containerEL = document.querySelector(".container");
-const btnPlayEL = document.querySelector(".btn_again");
-const btnCheckEL = document.querySelector(".btn_check");
-const hideNumEL = document.querySelector(".hide_num");
-const msgEL = document.querySelector(".message");
-const inputNumEL = document.querySelector(".input_number");
-const highScoreEL = document.querySelector(".high_score");
-const scoreEL = document.querySelector(".score");
+// 🎯 Guess My Number Game — main.js
+'use strict';
 
-// Generate a random number from 1 to 100
-let randomNum = Math.floor(Math.random() * 100) + 1;
-let score = 20;
-let highScore = 0;
+// Random number generator between 1 and 100
+let secretNumber = Math.trunc(Math.random() * 100) + 1;
 
-// Function to display messages
-const displayMessage = function (message) {
-  msgEL.textContent = message;
-};
+// Initial scores
+let score = 100;
+let highScore = localStorage.getItem('highScore')
+  ? Number(localStorage.getItem('highScore'))
+  : 0;
 
-// Event to check the hidden number
-btnCheckEL.addEventListener("click", () => {
-  const guess = Number(inputNumEL.value);
+// DOM elements
+const messageEl = document.querySelector('.message');
+const scoreEl = document.querySelector('.score');
+const highScoreEl = document.querySelector('.high_score');
+const numberEl = document.querySelector('.hide_num');
+const inputEl = document.querySelector('.input_number');
+const checkBtn = document.querySelector('.btn_check');
+const againBtn = document.querySelector('.btn_again');
 
-  if (!guess) {
-    displayMessage("❌ Please enter a number!");
+// Initialize displayed scores
+scoreEl.textContent = score;
+highScoreEl.textContent = highScore;
+
+// 🧠 Helper to display messages
+const displayMessage = msg => (messageEl.textContent = msg);
+
+// 🧮 Check button click handler
+checkBtn.addEventListener('click', () => {
+  const guess = Number(inputEl.value);
+
+  // 🧩 Input validation
+  if (!guess || guess < 1 || guess > 100) {
+    displayMessage('🚫 Enter a number between 1 and 100!');
     return;
   }
 
-  // When player wins
-  if (guess === randomNum) {
-    hideNumEL.textContent = randomNum;
-    hideNumEL.style.width = "50%";
-    hideNumEL.style.transition = "all 0.5s ease-in";
-    containerEL.style.backgroundColor = "#9be19b"; // soft green
-    displayMessage("🎉 Congratulations! You've Won the Game :)");
+  // ✅ Correct guess
+  if (guess === secretNumber) {
+    displayMessage('🎉 Correct Number!');
+    numberEl.textContent = secretNumber;
+    document.body.style.backgroundColor = '#60b347';
+    numberEl.style.width = '6rem';
 
     if (score > highScore) {
       highScore = score;
-      highScoreEL.textContent = highScore;
+      highScoreEl.textContent = highScore;
+      localStorage.setItem('highScore', highScore);
     }
-
-  } else {
-    // When guess is wrong
+  } 
+  // ❌ Wrong guess
+  else {
     if (score > 1) {
-      displayMessage(guess > randomNum ? "📈 Too high!" : "📉 Too low!");
+      displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
       score--;
-      scoreEL.textContent = score;
+      scoreEl.textContent = score;
     } else {
-      displayMessage("💀 You've lost the game!");
-      containerEL.style.backgroundColor = "#ff6961";
-      scoreEL.textContent = 0;
+      displayMessage('💥 You lost the game!');
+      scoreEl.textContent = 0;
+      document.body.style.backgroundColor = '#b34747';
     }
   }
 });
 
-// Reset the game
-btnPlayEL.addEventListener("click", () => {
-  score = 20;
-  randomNum = Math.floor(Math.random() * 100) + 1;
-  scoreEL.textContent = score;
-  hideNumEL.textContent = "?";
-  hideNumEL.style.width = "25%";
-  inputNumEL.value = "";
-  containerEL.style.backgroundColor = "#ddd";
-  displayMessage("Start guessing...");
+// 🔁 Play Again button handler
+againBtn.addEventListener('click', () => {
+  score = 100;
+  secretNumber = Math.trunc(Math.random() * 100) + 1;
+
+  displayMessage('Start guessing...');
+  scoreEl.textContent = score;
+  numberEl.textContent = '?';
+  inputEl.value = '';
+  document.body.style.backgroundColor = '#222';
+  numberEl.style.width = '4rem';
 });

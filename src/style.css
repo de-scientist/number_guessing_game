@@ -2,8 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -12,19 +12,20 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgba(8, 16, 45, .6);
+  background-color: #08102d;
   font-family: "Poppins", sans-serif;
+  color: #222;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .container {
   max-width: 850px;
   width: 100%;
-  box-shadow: 0 0 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
-  padding: 2rem;
-  color: 000;
-  border-radius: 0.5rem;
   background-color: #ddd;
-  transition: all 0.6s ease-in;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  padding: 2.5rem 3rem;
+  border-radius: 10px;
+  transition: all 0.6s ease;
 }
 
 .container_wrapper {
@@ -33,67 +34,120 @@ body {
   justify-content: space-between;
 }
 
-.container .btn {
+.btn {
   border: none;
-  padding: 0.5rem 1.5rem;
+  padding: 0.6rem 1.6rem;
   cursor: pointer;
-  outline: none;
-  font-size: 0.9rem;
   background-color: #cb3050;
-  border-radius: 4px;
-  color: white;
-  font-family: inherit;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-.container .btn:focus {
-  transform: scale(0.98);
-  outline: none;
+.btn:hover {
+  background-color: #b72845;
+  transform: scale(1.05);
 }
 
-.container h2{
+.btn:active {
+  transform: scale(0.96);
+}
+
+h2 {
   text-align: center;
-  font-size: 3rem;
-  margin: 1rem 0;
+  font-size: 2.5rem;
+  margin: 1.2rem 0;
+  color: #08102d;
 }
 
 .hide_num {
   text-align: center;
-  font-size: 3rem;
+  font-size: 3.5rem;
   background-color: #cb3050;
-  border-radius: 4px;
-  width: 25%;
-  margin: 0 auto;
   color: #fff;
+  border-radius: 6px;
+  width: 25%;
+  margin: 1rem auto;
+  padding: 0.5rem 0;
+  transition: all 0.5s ease-in-out;
+  letter-spacing: 1px;
 }
 
 .message {
   text-align: center;
   font-size: 1.3rem;
-  margin: 1rem 0;
+  margin-top: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
 }
 
 .number_data {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 3rem 0;
+  align-items: flex-start;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-.number_data input {
+.number_data form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input_number {
   outline: none;
-  border: none;
-  border-radius: 3px;
-  padding: 0.5rem 0.8rem;
-  font-size: 1.2rem;
-  border: 1px solid #ddd;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  padding: 0.6rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  width: 220px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-.number_data button {
-  margin-top: 0.5rem;
-  display: block;
+.input_number:focus {
+  border-color: #cb3050;
+  box-shadow: 0 0 5px rgba(203, 48, 80, 0.5);
 }
 
 .content {
   font-size: 1.2rem;
+  text-align: left;
+  color: #08102d;
 }
 
+.content p {
+  margin-bottom: 0.6rem;
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .hide_num {
+    width: 40%;
+    font-size: 2.5rem;
+  }
+
+  .number_data {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input_number {
+    width: 100%;
+  }
+
+  .content {
+    text-align: center;
+  }
+}
