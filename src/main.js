@@ -18,6 +18,7 @@ const numberEl = document.querySelector('.hide_num');
 const inputEl = document.querySelector('.input_number');
 const checkBtn = document.querySelector('.btn_check');
 const againBtn = document.querySelector('.btn_again');
+const container = document.querySelector('.container');
 
 // Initialize displayed scores
 scoreEl.textContent = score;
@@ -62,6 +63,18 @@ checkBtn.addEventListener('click', () => {
     }
   }
 });
+
+// When user wins
+container.classList.add('win');
+container.classList.remove('lose');
+
+// When user loses
+container.classList.add('lose');
+container.classList.remove('win');
+
+// When resetting
+container.classList.remove('win', 'lose');
+
 
 // 🔁 Play Again button handler
 againBtn.addEventListener('click', () => {
