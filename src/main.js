@@ -8,25 +8,17 @@ const inputNumEL = document.querySelector(".input_number");
 const highScoreEL = document.querySelector(".high_score");
 const scoreEL = document.querySelector(".score");
 
-// Set initial focus on the input field
-input.focus() ;
-
-// Function to reset the game
-const resetGame = () => {
-    randomNum = Math.floor(Math.random () * 100); // Generate a new random number
-    chance = 10; // Reset chances
-    input.disabled = false; // Enable input field
-    remainChances.textContent = chance; //Update chances display
-    guess.textContent = ""; //Clear guess display
-    guess.computedStyleMap.color = "#333"; // Reset guess text color
-    input.value = ""; // Clear input field
-    checkButton.textContent = "Check"; // Reset button text
-};
-
 //Generate a random number from 1 to 100
 let randomNum = Math.floor(Math.random() * 100 + 1);
 let score = 20;
 let highScore = 0;
+
+// event to check the hide num
+btnCheckEL.addEventListener("click", () => {
+  const guess = Number(inputNumEL.value);
+
+  
+})
 
 //Add click event listener to the check button
 checkButton.addEventListener("click", () => {
