@@ -17,8 +17,13 @@ let highScore = 0;
 btnCheckEL.addEventListener("click", () => {
   const guess = Number(inputNumEL.value);
 
-  
-})
+  // check empty input
+  if(guess) {
+
+  } else {
+    msgEL.textContent = "Please enter then number!"
+  }
+});
 
 //Add click event listener to the check button
 checkButton.addEventListener("click", () => {
