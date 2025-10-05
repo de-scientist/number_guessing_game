@@ -6,7 +6,7 @@ const hideNumEL = document.querySelector(".hide_num");
 const msgEL = document.querySelector(".message");
 const inputNumEL = document.querySelector(".input_number");
 const highScoreEL = document.querySelector(".high_score");
-const score = document.querySelector(".score");
+const scoreEL = document.querySelector(".score");
 
 // Set initial focus on the input field
 input.focus() ;
@@ -23,9 +23,10 @@ const resetGame = () => {
     checkButton.textContent = "Check"; // Reset button text
 };
 
-//Generate a random number between 0 and 99
-let randomNum = Math.floor(Math.random() * 100);
-let chance = 10;
+//Generate a random number from 1 to 100
+let randomNum = Math.floor(Math.random() * 100 + 1);
+let score = 20;
+let highScore = 0;
 
 //Add click event listener to the check button
 checkButton.addEventListener("click", () => {
