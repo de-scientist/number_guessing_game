@@ -31,7 +31,7 @@ btnCheckEL.addEventListener("click", () => {
         scoreEL.textContent = score;
 
       } else {
-        msgEL.textContent = "You've Lost the Game";
+        displayMessage("You've Lost the Game");
         containerEL.style.backgroundColor = "#fff"
         scoreEL.textContent = 0;
       }
@@ -42,12 +42,12 @@ btnCheckEL.addEventListener("click", () => {
       hideNumEL.style.width = "50%";
       hideNumEL.style.transition = "all 0.5s ease-in";
       containerEL.style.backgroundColor = "#eed8d";
-      msgEL.textContent = "Congratulations You've Won the Game :)"
+      displayMessage("Congratulations You've Won the Game :)"); 
 
     }
 
   } else {
-    msgEL.textContent = "Please enter then number!"
+    displayMessage("Please Enter the Number :("); 
   }
 });
 
@@ -55,3 +55,16 @@ btnCheckEL.addEventListener("click", () => {
 const displayMessage = function (message) {
   msgEL.textContent = message;
 }
+
+//reset the guess
+btnPlayEL.addEventListener("click",() => (
+  score = 100;
+  randomNum = Math.floor(Math.random()*100)+1;
+  scoreEL.textContent = score;
+  hideNumEL.textContent = "?";
+  hideNumEL.style.width = "25%";
+  hideNumEL.style.transition = "all 0.5s ease-in";
+  inputNumEL.value = ""
+  containerEL.style.backgroundColor = "#ddd";
+  displayMessage("Start Guessing..........");
+) )
