@@ -3,6 +3,7 @@
 
 // Random number generator between 1 and 100
 let secretNumber = Math.trunc(Math.random() * 100) + 1;
+console.log("🎯 Secret number (for testing):", secretNumber);
 
 // Initial scores
 let score = 100;
@@ -80,6 +81,7 @@ container.classList.remove('win', 'lose');
 againBtn.addEventListener('click', () => {
   score = 100;
   secretNumber = Math.trunc(Math.random() * 100) + 1;
+  console.log("🎯 Secret number (for testing):", secretNumber);
 
   displayMessage('Start guessing...');
   scoreEl.textContent = score;
