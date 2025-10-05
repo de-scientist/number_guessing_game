@@ -8,63 +8,60 @@ const inputNumEL = document.querySelector(".input_number");
 const highScoreEL = document.querySelector(".high_score");
 const scoreEL = document.querySelector(".score");
 
-//Generate a random number from 1 to 100
-let randomNum = Math.floor(Math.random() * 100 + 1);
+// Generate a random number from 1 to 100
+let randomNum = Math.floor(Math.random() * 100) + 1;
 let score = 20;
 let highScore = 0;
 
-// event to check the hide num
+// Function to display messages
+const displayMessage = function (message) {
+  msgEL.textContent = message;
+};
+
+// Event to check the hidden number
 btnCheckEL.addEventListener("click", () => {
   const guess = Number(inputNumEL.value);
 
-  // check empty input
-  if(guess) {
+  if (!guess) {
+    displayMessage("❌ Please enter a number!");
+    return;
+  }
 
-    //not match hide number
-    if(guess != randomNum) {
+  // When player wins
+  if (guess === randomNum) {
+    hideNumEL.textContent = randomNum;
+    hideNumEL.style.width = "50%";
+    hideNumEL.style.transition = "all 0.5s ease-in";
+    containerEL.style.backgroundColor = "#9be19b"; // soft green
+    displayMessage("🎉 Congratulations! You've Won the Game :)");
 
-      if (score > 1) {
-        score--;
-        scoreEL.textContent = score;
-
-        msgEL.textContent = guess > randomNum > "Too high" : "Too Low";
-        scoreEL.textContent = score;
-
-      } else {
-        displayMessage("You've Lost the Game");
-        containerEL.style.backgroundColor = "#fff"
-        scoreEL.textContent = 0;
-      }
-
-    } else {
-      //success
-      hideNumEL.textContent = randomNum;
-      hideNumEL.style.width = "50%";
-      hideNumEL.style.transition = "all 0.5s ease-in";
-      containerEL.style.backgroundColor = "#eed8d";
-      displayMessage("Congratulations You've Won the Game :)"); 
-
+    if (score > highScore) {
+      highScore = score;
+      highScoreEL.textContent = highScore;
     }
 
   } else {
-    displayMessage("Please Enter the Number :("); 
+    // When guess is wrong
+    if (score > 1) {
+      displayMessage(guess > randomNum ? "📈 Too high!" : "📉 Too low!");
+      score--;
+      scoreEL.textContent = score;
+    } else {
+      displayMessage("💀 You've lost the game!");
+      containerEL.style.backgroundColor = "#ff6961";
+      scoreEL.textContent = 0;
+    }
   }
 });
 
-// display the message
-const displayMessage = function (message) {
-  msgEL.textContent = message;
-}
-
-//reset the guess
-btnPlayEL.addEventListener("click",() => (
-  score = 100;
-  randomNum = Math.floor(Math.random()*100)+1;
+// Reset the game
+btnPlayEL.addEventListener("click", () => {
+  score = 20;
+  randomNum = Math.floor(Math.random() * 100) + 1;
   scoreEL.textContent = score;
   hideNumEL.textContent = "?";
   hideNumEL.style.width = "25%";
-  hideNumEL.style.transition = "all 0.5s ease-in";
-  inputNumEL.value = ""
+  inputNumEL.value = "";
   containerEL.style.backgroundColor = "#ddd";
-  displayMessage("Start Guessing..........");
-) )
+  displayMessage("Start guessing...");
+});
